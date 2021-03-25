@@ -1,0 +1,2 @@
+Error: incorrect constant
+Error in string 9:     a =     12a.1; 

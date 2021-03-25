@@ -1,0 +1,13 @@
+void main()
+{
+/* // */
+/* int */  /*
+// something
+// again 
+*/
+    while();
+    a =     12a.1; /*;*/
+    a2 = 12.1.2;
+    return 0;
+}
+
