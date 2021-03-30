@@ -45,13 +45,14 @@ bool translator::analyze_lexical(string source, string tokens, string error){
 
 // Очистка от комментариев
 bool translator::analyze_lexical_decomment(string& str, bool is_changed){
-
+   
         bool change = false;
         size_t index_c = str.find("//"), index_c1 = str.find("/*"), index_c2;     /*  //  */
-        if (index_c != string::npos && index_c < index_c1){                       //   пример для чего это - /*  //comment*/  чтобы не вырезал закрывающий коммент
+        if (index_c != string::npos && index_c < index_c1){                       //   пример для чего это -   //comment/*  
             str.erase(index_c);
             change = true;
         }
+        index_c1 = str.find("/*");
         index_c2 = str.find("*/");
         if(index_c2 < index_c1){
             outerror << "Error: incorrect coment" << endl;
