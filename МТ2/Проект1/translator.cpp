@@ -176,7 +176,7 @@ bool translator::analyze_lexical_string(string str) {
             int i;
             bool finded = false;
             for (i = 1; i < constval.size() && !finded; i++)
-                finded = !(numbers.check(str[i]) || str[i] == '.');
+                finded = !(numbers.check(str[i]));
             string str_t1, str_t2;
             stringstream str_stream_t;
             str_stream_t << str[i - 1];
@@ -194,7 +194,7 @@ bool translator::analyze_lexical_string(string str) {
             }
             else
                 str.erase(0);
-            if (constval.find_last_of('.') - constval.find_first_of('.') != 0) { // во избежание  конст = 1.1.1
+            if (constval.find(".") != string::npos) { // во избежание  конст = 1.1 (типа не int)
                 outerror << "Error: incorrect constant" << endl;
                 cout << "Error: incorrect constant" << endl;
                 return false;
@@ -212,13 +212,13 @@ bool translator::analyze_lexical_string(string str) {
             int table;
             if (operations.check(str_2)) {  // Двухсимвольная
                 operations.get_num(str_2, table);
-                out << token(4, table, -1);
+                out << token(2, table, -1);
                 str.erase(0, 2);
                 return analyze_lexical_string(str);
             }
             if (operations.check(str_1)) {   // Односимвольная
                 operations.get_num(str_1, table);
-                out << token(4, table, -1);
+                out << token(2, table, -1);
                 str.erase(0, 1);
                 return analyze_lexical_string(str);
             }

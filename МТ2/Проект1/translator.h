@@ -22,7 +22,7 @@ private:
     table_const<string> keywords;   // 3
     table_const<char> separators;   // 4
     // Переменные таблицы
-    table_var identificators;          // 5
+    table_var identificators;       // 5
     table_var constants;            // 6
     // Файловые потоки
     ifstream in;
